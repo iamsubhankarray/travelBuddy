@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Header from "./header";
 import Footer from "./Footer";
+import axios from "axios";
 
 export default function Login() {
   const [formData, setFormData] = useState({
@@ -14,11 +15,16 @@ export default function Login() {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form Submitted:", formData);
+    // 
+    axios.post("http://192.168.0.111:3000/login",formData)
+    .then(console.log(formData))
+    // ("Form Submitted:", {formData}))
+    .catch(err=>console.log(err))
   };
 
   return (
