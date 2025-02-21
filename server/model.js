@@ -1,4 +1,4 @@
-import mongoose, { Collection } from "mongoose";
+import mongoose from "mongoose";
 const memberSchema = new mongoose.Schema({
     name:{
         type:String,
@@ -40,8 +40,9 @@ const memberSchema = new mongoose.Schema({
 
 
 
-},{timestamps:true},
-{Collection:members}
+},
+{timestamps:true},
+
 )
 const members= mongoose.model("members",memberSchema)
 export default members
